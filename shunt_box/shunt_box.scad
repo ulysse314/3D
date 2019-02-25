@@ -1,7 +1,7 @@
 inside_width = 26;
 inside_length = 121.5;
 inside_height = 22;
-inside_lid_height = 15;
+inside_lid_height = 17;
 
 wall = 2;
 rounded_radius = 3;
