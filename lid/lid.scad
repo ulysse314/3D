@@ -4,10 +4,10 @@ height = 15;
 thickness = 5;
 
 width_cut_count = 12;
-length_cut_count = 21;
+length_cut_count = 20;
 
 cut_length = width / (width_cut_count * 2 + 1);
-cut_width = length / (length_cut_count * 2 + 1);
+cut_width = (length - thickness * 2) / (length_cut_count * 2 + 1);
 
 echo(cut_length);
 echo(cut_width);
@@ -23,12 +23,8 @@ module width_cut(offset, extra, outter) {
 }
 
 module length_cut(offset, extra, outter) {
-  if (outter) {
-    translate([-1, offset, -1]) cube([cut_width * 2 + 1, thickness + extra, thickness + 2]);
-    translate([length - cut_width * 2, offset, -1]) cube([cut_width * 2 + 1, thickness + extra, thickness + 2]);
-  }
-  for (i = [1:length_cut_count - (outter ? 2 : 1)]) {
-    translate([cut_width * (i * 2 + (outter ? 1 : 0)), offset, -1]) cube([cut_width, thickness + extra, thickness + 2]);
+  for (i = [0:length_cut_count - (outter ? 1 : 0)]) {
+    translate([thickness + cut_width * (i * 2 + (outter ? 1 : 0)), offset, -1]) cube([cut_width, thickness + extra, thickness + 2]);
   }
 }
 
@@ -37,15 +33,15 @@ module main_part() {
     cube([length, width, thickness]);
     width_cut(-1, 1, true);
     width_cut(length - thickness, 1, true);
-    length_cut(-1, 1, true);
-    length_cut(width - thickness, 1, true);
+    length_cut(-1, 1, false);
+    length_cut(width - thickness, 1, false);
   }
 }
 
 module length_part() {
   difference() {
     cube([length, thickness, height + thickness]);
-    length_cut(-1, 2, false);
+    length_cut(-1, 2, true);
     translate([-1, -1, -1]) cube([thickness + 1, thickness + 2, (height + thickness) / 3 + 1]);
     translate([-1, -1, (height + thickness) * 2 / 3]) cube([thickness + 1, thickness + 2, (height + thickness) / 3 + 1]);
     translate([length - thickness, -1, -1]) cube([thickness + 1, thickness + 2, (height + thickness) / 3 + 1]);
