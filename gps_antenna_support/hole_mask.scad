@@ -1,6 +1,6 @@
 include <antenna_gps_support.scad>
 
-height = 10;
+height = 15;
 
 difference() {
   main_body(height);

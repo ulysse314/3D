@@ -3,14 +3,14 @@ $fn = 200;
 length = 46;
 width = 40;
 height_1 = 5;
-height_2 = 15;
+height_2 = 10;
 
 cable_diameter = 3.1;
-cable_path_size = 9;
+cable_path_size = 9.3;
 tube_length = 2;
 
-screw_diameter = 3;
-screw_head_diameter = 5.5;
+screw_diameter = 3.3;
+screw_head_diameter = 6;
 screw_head_height = 3.5;
 
 radius_corner = 4;
@@ -53,8 +53,8 @@ module screw() {
 }
 
 module both_screws() {
-  translate([width * 3 / 4, length / 2, 0]) screw();
-  translate([width / 4, length / 2, 0]) screw();
+  translate([(width - cable_path_size) * 3 / 4 + cable_path_size, length / 2, 0]) screw();
+  translate([(width - cable_path_size) / 4, length / 2, 0]) screw();
 }
 
 module main_body(height) {
