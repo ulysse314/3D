@@ -27,11 +27,11 @@ module length_cut(offset, extra, outter) {
 
 module width_cut(offset, extra, outter) {
   if (outter) {
-    translate([offset, -1, -1]) cube([thickness + extra, cut_length * 2 + 1, thickness + 2]);
-    translate([offset, width - cut_length * 2, -1]) cube([thickness + extra, cut_length * 2 + 1, thickness + 2]);
+    translate([offset, -1, -1]) cube([thickness + extra, cut_length * 2 - cut_margin + 1, thickness + 2]);
+    translate([offset, width - cut_length * 2 + cut_margin, -1]) cube([thickness + extra, cut_length * 2 + 1, thickness + 2]);
   }
   for (i = [1:width_cut_count - (outter ? 2 : 1)]) {
-    translate([offset, cut_length * (i * 2 + (outter ? 1 : 0)), -1]) cube([thickness + extra, cut_length, thickness + 2]);
+    translate([offset, cut_length * (i * 2 + (outter ? 1 : 0)) + cut_margin, -1]) cube([thickness + extra, cut_length - cut_margin * 2, thickness + 2]);
   }
 }
 
