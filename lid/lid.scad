@@ -39,8 +39,8 @@ module cut_for_test() {
   if (test_version) {
     length_count = 5;
     width_count = 4;
-    translate([-thickness * 2, cut_length * length_count, -1]) cube([length * 2, width * 2, height * 2]);
-    translate([thickness + cut_width * width_count, -thickness * 2, -1]) cube([length * 2, width * 2, height * 2]);
+    translate([-thickness * 2, cut_length * length_count - cut_margin, -1]) cube([length * 2, width * 2, height * 2]);
+    translate([thickness + cut_width * width_count - cut_margin, -thickness * 2, -1]) cube([length * 2, width * 2, height * 2]);
   }
 }
 
