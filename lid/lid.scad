@@ -45,10 +45,10 @@ module cut_for_test() {
 module main_part() {
   difference() {
     cube([length, width, thickness]);
-    width_cut(-1, 1, true);
-    width_cut(length - thickness, 1, true);
-    length_cut(-1, 1, false);
-    length_cut(width - thickness, 1, false);
+    width_cut(-1, 1 - cut_margin, true);
+    width_cut(length - thickness + cut_margin, 1 - cut_margin, true);
+    length_cut(-1, 1 - cut_margin, false);
+    length_cut(width - thickness + cut_margin, 1 - cut_margin, false);
     cut_for_test();
   }
 }
