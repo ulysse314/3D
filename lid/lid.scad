@@ -2,7 +2,7 @@ inner_length = 350;
 inner_width = 200;
 inner_height = 15;
 thickness = 5;
-cut_margin = 0;
+cut_margin = 0.25;
 
 test_version = false;
 
