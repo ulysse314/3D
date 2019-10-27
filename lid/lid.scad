@@ -3,8 +3,8 @@ inner_width = 200;
 inner_height = 15;
 thickness = 5;
 
-cut_margin = 0.25;
-thickness_margin = 0.3;
+cut_margin = 0.15;
+thickness_margin = 1;
 
 test_version = false;
 
