@@ -1,4 +1,4 @@
-support_length = 52;
+support_length = 50 + 5 - 13;
 support_width = 20;
 support_height = 2;
 
