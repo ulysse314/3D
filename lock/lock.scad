@@ -11,7 +11,7 @@ rod_opening_size = rod_diameter + 2;
 
 rod_stopper_width = 2;
 
-screw_diameter = 3;
+screw_diameter = 2;
 
 $fn = 50;
 
