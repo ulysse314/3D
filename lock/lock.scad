@@ -44,6 +44,8 @@ module rode_bottom() {
   difference() {
     cube([rod_diameter, rod_open_offset, support_height + rod_vertical_offset + rod_diameter / 2]);
     translate([rod_diameter / 2, -1, support_height + rod_diameter / 2 + rod_vertical_offset]) rotate([-90, 0, 0]) cylinder(h = rod_open_offset + 2, d = rod_diameter);
+    translate([rod_diameter / 2, rod_close_offset - rod_opening_size, support_height + rod_vertical_offset]) cube([rod_guide_diameter, rod_opening_size, rod_guide_diameter]);
+    translate([rod_diameter / 2, rod_open_offset - rod_opening_size, support_height + rod_vertical_offset]) cube([rod_guide_diameter, rod_opening_size, rod_guide_diameter]);
   }
 }
 
@@ -62,5 +64,7 @@ module main_part() {
     translate([support_width / 2, rod_close_offset, support_height + rod_diameter / 2 + rod_vertical_offset]) rode_position();
     translate([support_width / 2 - rod_diameter / 2, rod_close_offset - rod_opening_size, support_height + rod_vertical_offset + rod_diameter / 2]) cube([rod_diameter, rod_open_offset - rod_close_offset + rod_opening_size, rod_guide_diameter]);
     translate([support_width / 2 - rod_diameter / 2, -1, -1]) cube([rod_diameter, rod_open_offset + 1, support_height + rod_vertical_offset + rod_diameter / 2 + 1]);
+    translate([support_width / 2, rod_close_offset - rod_opening_size, support_height + rod_vertical_offset]) cube([rod_guide_diameter / 2, rod_opening_size, rod_guide_diameter]);
+    translate([support_width / 2, rod_open_offset - rod_opening_size, support_height + rod_vertical_offset]) cube([rod_guide_diameter / 2, rod_opening_size, rod_guide_diameter]);
   }
 }
