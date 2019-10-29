@@ -13,7 +13,11 @@ rod_stopper_width = 2;
 
 screw_diameter = 2;
 
-$fn = 50;
+receiver_width = 26;
+receiver_length = 6;
+receiver_hole_height = 28.5;;
+
+$fn = 75;
 
 module screw() {
   translate([0, 0, -1]) cylinder(h = support_height + 2, d = screw_diameter);
@@ -68,3 +72,17 @@ module main_part() {
     translate([support_width / 2, rod_open_offset - rod_opening_size, support_height + rod_vertical_offset]) cube([rod_guide_diameter / 2, rod_opening_size, rod_guide_diameter]);
   }
 }
+
+module receiver() {
+  difference() {
+    union() {
+      cube([receiver_width, receiver_length, support_height]);
+      translate([receiver_width / 2 - receiver_width / 4, 0, 0]) cube([receiver_width / 2, receiver_length, receiver_hole_height]);
+      translate([receiver_width / 2, 0, receiver_hole_height]) rotate([-90, 0, 0]) scale([receiver_width / 2, rod_guide_diameter, 1]) cylinder(h = receiver_length, d = 1);
+    }
+    translate([receiver_width / 2, -1, receiver_hole_height]) rotate([-90, 0, 0]) cylinder(h = receiver_length + 2, d = rod_diameter);
+    translate([receiver_width - receiver_length / 2, receiver_length / 2, -1]) cylinder(h = support_height + 2, d = screw_diameter);
+    translate([receiver_length / 2, receiver_length / 2, -1]) cylinder(h = support_height + 2, d = screw_diameter);
+  }
+}
+
