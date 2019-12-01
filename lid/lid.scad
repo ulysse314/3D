@@ -1,6 +1,6 @@
 inner_length = 350;
-inner_width = 200;
-inner_height = 15;
+inner_width = 198;
+inner_height = 17;
 thickness = 5;
 
 cut_margin = 0.15;
