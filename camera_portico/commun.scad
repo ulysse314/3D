@@ -21,6 +21,9 @@ lock_plateform_diameter = 2;
 
 screw_diameter = 2;
 
+attach_hole_width = 2;
+attach_hole_length = 4;
+
 fn = 4;
 //fn_angle = 360 / fn / 2;
 fn_angle = 0;

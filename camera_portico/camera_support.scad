@@ -3,8 +3,6 @@ include <commun.scad>
 camera_support_height = 40;
 camera_cable_width = 20;
 camera_cable_thickness = 3.5;
-attach_hole_width = 2;
-attach_hole_length = 4;
 
 camera_screw_diameter = 2.5;
 camera_screw_width = 21;

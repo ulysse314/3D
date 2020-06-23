@@ -2,6 +2,7 @@ include <hinge.scad>
 include <front_portico.scad>
 include <back_portico.scad>
 include <camera_support.scad>
+include <attach.scad>
 
 if (true) {
   rotate([-90, 0, 180])
@@ -17,6 +18,7 @@ if (true) {
             camera_support();
     }
   }
+  translate([0, -130, -portico_thickness / 2]) attach();
 } else if (false) {
   rotate([90, 0, 0]) back_portico();
 } else if (false) {
