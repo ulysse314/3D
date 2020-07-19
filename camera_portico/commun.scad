@@ -10,10 +10,8 @@ width = 185;
 tube_diameter = 5;
 hinge_height = 5;
 tube_diameter_new = cos(45) * tube_diameter;
-//tube_width_delta = -tube_diameter_new + 0.01;
 tube_width_delta = -.3;
 hinge_height_new = tube_diameter_new + 1;
-//tube_diameter_new = 5;
 
 plateform_width = 20;
 plateform_length = 20;
@@ -36,14 +34,11 @@ bolt_height = 1.8;
 bolt_holder_diameter = bolt_diameter * 1.75;
 
 fn = 4;
-//fn_angle = 360 / fn / 2;
 fn_angle = 0;
 portico_thickness = tube_diameter * cos(45);
 
 module tube(length, diameter) {
   x = cos(45) * diameter;
-//  h = tube_diameter;
-//  w = tube_diameter - 0.3;
   h = x;
   w = x;
   echo(x);
@@ -61,7 +56,6 @@ module tube2(length, direction) {
 }
 
 module portico_lock_plateform() {
-//  tube(tube_diameter / 2 + plateforme_thickness * 2, tube_diameter);
   male_lock(tube_diameter / 2 + plateforme_thickness * 2);
 }
 

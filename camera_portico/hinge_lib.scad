@@ -24,9 +24,7 @@ module hinge() {
       mirror([1, 0, 0]) hinge_hinge();
     }
     translate([-tube_diameter / 2 - 1-(width + tube_width_delta) / 2, 0, hinge_height_new / 2]) rotate([0, 90, 0]) cylinder(d = portico_hinge_diameter, h = width + tube_diameter + 2, $fn = 100);
-    echo (portico_hinge_length * 5 / 2 - tube_diameter / 2-(width + tube_width_delta) / 2);
     translate([-hinge_screw_distance / 2, hinge_length / 2 + tube_diameter / 2, -1]) cylinder(d = screw_diameter, h = tube_diameter + 2);
-    echo (width + tube_diameter - portico_hinge_length * 5 / 2 - tube_diameter / 2-(width + tube_width_delta) / 2);
     translate([hinge_screw_distance / 2, hinge_length / 2 + tube_diameter / 2, -1]) cylinder(d = screw_diameter, h = tube_diameter + 2);
   }
 }
