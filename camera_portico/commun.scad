@@ -6,8 +6,14 @@ delta_x = 0.4;
 hinge_delta = 0.25;
 
 height = 200;
-width = 150;
+width = 185;
 tube_diameter = 5;
+hinge_height = 5;
+tube_diameter_new = cos(45) * tube_diameter;
+//tube_width_delta = -tube_diameter_new + 0.01;
+tube_width_delta = -.3;
+hinge_height_new = tube_diameter_new + 1;
+//tube_diameter_new = 5;
 
 plateform_width = 20;
 plateform_length = 20;
@@ -21,24 +27,36 @@ lock_plateform_diameter = 2;
 
 screw_diameter = 2;
 
-attach_hole_width = 2;
+attach_hole_width = 2.5;
 attach_hole_length = 4;
+
+under_thickness = 1;
+bolt_diameter = 4.55;
+bolt_height = 1.8;
+bolt_holder_diameter = bolt_diameter * 1.75;
 
 fn = 4;
 //fn_angle = 360 / fn / 2;
 fn_angle = 0;
 portico_thickness = tube_diameter * cos(45);
 
-portico_angle = atan((width / 2 - plateform_width / 2) / height);
-portico_length = sqrt((width / 2 - plateform_width / 2) * (width / 2 - plateform_width / 2) + height * height);
-
 module tube(length, diameter) {
-  if (false) {
-    linear_extrude(height = length, convexity = 10, twist = 0)
-    circle(d = diameter, $fn = fn);
+  x = cos(45) * diameter;
+//  h = tube_diameter;
+//  w = tube_diameter - 0.3;
+  h = x;
+  w = x;
+  echo(x);
+  translate([-h / 2, -w / 2, 0]) cube([h, w, length]);
+}
+
+module tube2(length, direction) {
+  h = tube_diameter_new;
+  w = tube_diameter_new + tube_width_delta;
+  if (direction) {
+    translate([-w / 2, 0, -h / 2]) cube([w, length, h]);
   } else {
-    x = cos(45) * diameter;
-    translate([-x / 2, -x / 2, 0]) cube([x, x, length]);
+    translate([-h / 2, -w / 2, 0]) cube([h, w, length]);
   }
 }
 
@@ -53,4 +71,11 @@ module male_lock(length) {
 
 module female_lock(length) {
   translate([-portico_thickness / 2 - delta_x, -portico_thickness / 2 - delta_y, 0]) cube([portico_thickness + delta_x * 2, portico_thickness + delta_y * 2, length]);
+}
+
+module bolt_holder() {
+  difference() {
+    cylinder(h = bolt_height, d = bolt_holder_diameter);
+    cylinder(h = bolt_height + 1, d = bolt_diameter, $fn = 6);
+  }
 }
