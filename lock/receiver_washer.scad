@@ -1,3 +1,3 @@
 include <commun.scad>
 
-rode_bottom();
+receiver_washer();
