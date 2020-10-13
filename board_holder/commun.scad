@@ -1,7 +1,7 @@
-board_width = 50.5;
-board_length = 70;
-board_thickness = 2;
-board_pin_height = 5;
+board_width = 76.7;
+board_length = 85;
+board_thickness = 1.7;
+board_pin_height = 12;
 
 board_rail_depth = 3;
 
